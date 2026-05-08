@@ -6,7 +6,7 @@ A CLI reminder app built to learn SQLite and raw SQL in Python.
 
 - Add reminders with a name and due date
 - View all reminders stored in the database
-- Edit reminders (in progress)
+- Edit reminders (Update and Delete)
 
 ## Usage Example
 

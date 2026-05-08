@@ -115,7 +115,6 @@ class Reminders():
                 match self.update_or_delete:
                     case 1:
                         self.update_reminder()
-                        print(f"Reminder {self.edit_id} has been updated!")
                         break
                     case 2:
                         self.delete_reminder()
@@ -166,23 +165,27 @@ class Reminders():
                 mm = int(mm_str)
                 yyyy = int(yyyy_str)
                 update_due_date = datetime.date(yyyy, mm, dd).strftime("%d/%m/%Y")
-                print(update_due_date)
+
             else:
                 update_due_date = None
-                print(type(update_due_date))
+
             
 
             try:
                 if update_name and update_due_date:
                     self.cursor_obj.execute(update_name_due_date_query, (update_name, update_due_date, self.edit_id ))
                     self.connection_obj.commit()
+                    print(f"Reminder {self.edit_id} has been updated!")
                 elif update_name and not update_due_date:
                     self.cursor_obj.execute(update_name_only_query, (update_name, self.edit_id ))
                     self.connection_obj.commit()   
-                else:
+                    print(f"Reminder {self.edit_id} has been updated!")
+                elif update_due_date and not update_name:
                     self.cursor_obj.execute(update_due_date_only_query, (update_due_date, self.edit_id ))
-                    self.connection_obj.commit()   
-
+                    self.connection_obj.commit() 
+                    print(f"Reminder {self.edit_id} has been updated!")  
+                else:
+                    print(f"Reminder remains unchanged.")
                 
             except sqlite3.Error as e:
                 print(e)
