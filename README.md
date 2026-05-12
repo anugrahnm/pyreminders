@@ -1,14 +1,15 @@
 # PyReminder
 
-A CLI reminder app built to learn SQLite and raw SQL in Python.
+A CLI reminder app with Telegram notifications, built to learn SQLite, raw SQL, and bot integrations in Python.
 
 ## What it does
 
 - Add reminders with a name and due date
-- View all reminders stored in the database
-- Edit reminders (Update and Delete )
+- View all stored reminders
+- Edit or delete existing reminders
+- Sends Telegram alerts for reminders due today and tomorrow
 
-## Usage Example
+## Usage
 
 ```bash
 uv run main.py
@@ -22,7 +23,53 @@ Select an option number:
 4: Quit
 ```
 
+## Telegram Alerts
+
+Run the checker manually or schedule it to run daily:
+
+```bash
+uv run checker.py
+```
+
+You'll receive a Telegram message for any reminder due today or tomorrow.
+
+## Setup
+
+**1. Clone the repo and install dependencies**
+
+```bash
+git clone https://github.com/anugrahnm/pyreminder
+cd pyreminder
+uv sync
+```
+
+**2. Create a Telegram bot**
+
+- Message [@BotFather](https://t.me/botfather) on Telegram and follow the steps to create a bot
+- Copy your bot token
+
+**3. Get your chat ID**
+
+- Message [@userinfobot](https://t.me/userinfobot) on Telegram
+- Copy the ID it returns
+
+**4. Create a `.env` file in the project root**
+
+```
+TOKEN=your_bot_token
+CHAT_ID=your_chat_id
+```
+
+**5. Run**
+
+```bash
+uv run main.py       # CLI reminder manager
+uv run checker.py    # Send Telegram alerts
+```
+
 ## Built with
 
 - Python
 - SQLite3 (built into Python)
+- python-telegram-bot
+- python-dotenv
