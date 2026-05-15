@@ -1,6 +1,6 @@
 # PyReminder
 
-A CLI reminder app with Telegram notifications, built to learn SQLite, raw SQL, and bot integrations in Python.
+A CLI reminder app with Telegram notifications, built with PostgreSQL, raw SQL, and bot integrations in Python.
 
 ## What it does
 
@@ -58,6 +58,11 @@ uv sync
 ```
 TOKEN=your_bot_token
 CHAT_ID=your_chat_id
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=pyreminder
+DB_USER=postgres
+DB_PASSWORD=your_password
 ```
 
 **5. Run**
@@ -70,6 +75,11 @@ uv run checker.py    # Send Telegram alerts
 ## Built with
 
 - Python
-- SQLite3 (built into Python)
+- PostgreSQL
+- psycopg2-binary
 - python-telegram-bot
 - python-dotenv
+
+## Notes
+
+Originally built with SQLite3, migrated to PostgreSQL.
